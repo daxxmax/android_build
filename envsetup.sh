@@ -141,7 +141,7 @@ function setpaths()
     case $ARCH in
         x86) toolchaindir=x86/i686-android-linux-4.4.3/bin
             ;;
-        arm) toolchaindir=arm/arm-linux-androideabi-4.6/bin
+        arm) toolchaindir=arm/linaro-4.7.1-2012.06-20/bin
             ;;
         *)
             echo "Can't find toolchain for unknown architecture: $ARCH"
@@ -158,7 +158,7 @@ function setpaths()
     case $ARCH in
         x86) toolchaindir=x86/i686-eabi-4.4.3/bin
             ;;
-        arm) toolchaindir=arm/arm-eabi-4.6/bin
+        arm) toolchaindir=arm/linaro-4.7.1-2012.06-20/bin
             ;;
         *)
             echo "Can't find toolchain for unknown architecture: $ARCH"
