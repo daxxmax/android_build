@@ -135,13 +135,17 @@ function setpaths()
     gccprebuiltdir=$(get_abs_build_var ANDROID_GCC_PREBUILTS)
     gccprebuiltextradir=$(get_abs_build_var ANDROID_GCC_PREBUILTS_EXTRA)
 
+    # default toolchain directory
+    if [ -z "$TOOLCHAIN_DIR" ]; then
+      export TOOLCHAIN_DIR=linaro-4.7.1-2012.06-20
+    fi
     # The gcc toolchain does not exists for windows/cygwin. In this case, do not reference it.
     export ANDROID_EABI_TOOLCHAIN=
     local ARCH=$(get_build_var TARGET_ARCH)
     case $ARCH in
         x86) toolchaindir=x86/i686-android-linux-4.4.3/bin
             ;;
-        arm) toolchaindir=arm/linaro-4.7.1-2012.06-20/bin
+        arm) toolchaindir=arm/${TOOLCHAIN_DIR}/bin
             ;;
         *)
             echo "Can't find toolchain for unknown architecture: $ARCH"
@@ -158,7 +162,7 @@ function setpaths()
     case $ARCH in
         x86) toolchaindir=x86/i686-eabi-4.4.3/bin
             ;;
-        arm) toolchaindir=arm/linaro-4.7.1-2012.06-20/bin
+        arm) toolchaindir=arm/${TOOLCHAIN_DIR}/bin
             ;;
         *)
             echo "Can't find toolchain for unknown architecture: $ARCH"

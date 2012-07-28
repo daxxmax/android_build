@@ -48,7 +48,7 @@ TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/$(HOST_PREBUILT_EXTRA_TAG)/arm/arm-linux-
 else
 TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-4.6
 endif
-TARGET_TOOLS_PREFIX := prebuilts/gcc/linux-x86/arm/linaro-4.7.1-2012.06-20/bin/arm-linux-androideabi-
+TARGET_TOOLS_PREFIX := prebuilts/gcc/linux-x86/arm/$(TOOLCHAIN_DIR)/bin/arm-linux-androideabi-
 endif
 
 # Only define these if there's actually a gcc in there.
