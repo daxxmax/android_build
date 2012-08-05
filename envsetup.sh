@@ -137,7 +137,7 @@ function setpaths()
 
     # default toolchain directory
     if [ -z "$TOOLCHAIN_DIR" ]; then
-      export TOOLCHAIN_DIR=linaro-4.7.1-2012.06-20
+      export TOOLCHAIN_DIR=linaro-4.7-2012.07
     fi
     # The gcc toolchain does not exists for windows/cygwin. In this case, do not reference it.
     export ANDROID_EABI_TOOLCHAIN=
