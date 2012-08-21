@@ -18,7 +18,7 @@ endif
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
 
 ## GCC4.7
-KERNEL_CFLAGS=$(call cc-ifversion, -ge, 47, $(call cc-option,"-mno-unaligned-access", ) $(call cc-option,"-fno-pic", ))
+#KERNEL_CFLAGS=$(call cc-ifversion, -ge, 47, $(call cc-option,"-mno-unaligned-access", ) $(call cc-option,"-fno-pic", ))
 
 ifeq ($(BOARD_USES_UBOOT),true)
 	TARGET_PREBUILT_INT_KERNEL := $(KERNEL_OUT)/arch/$(TARGET_ARCH)/boot/uImage
