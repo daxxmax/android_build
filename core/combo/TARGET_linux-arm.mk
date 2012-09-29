@@ -164,7 +164,11 @@ else
 TARGET_GLOBAL_CFLAGS +=	-mno-thumb-interwork
 endif
 
+ifeq (,$(filter true 1,$(LINARO_ISO_CPP11_BUILD)))
 TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden
+else
+TARGET_GLOBAL_CPPFLAGS += -fvisibility-inlines-hidden $(call cc-option,-std=gnu++11)
+endif
 
 # More flags/options can be added here
 TARGET_RELEASE_CFLAGS += \
