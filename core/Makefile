@@ -260,12 +260,12 @@ $(APKCERTS_FILE):
 	@echo APK certs list: $@
 	@mkdir -p $(dir $@)
 	@rm -f $@
-	$(hide) $(foreach p,$(PACKAGES),\
+	$(hide) cd $(dir $@) && $(foreach p,$(PACKAGES),\
           $(if $(PACKAGES.$(p).EXTERNAL_KEY),\
 	    echo 'name="$(p).apk" certificate="EXTERNAL" \
-	         private_key=""' >> $@;,\
+	         private_key=""' >> $(notdir $@);,\
 	    echo 'name="$(p).apk" certificate="$(PACKAGES.$(p).CERTIFICATE)" \
-	         private_key="$(PACKAGES.$(p).PRIVATE_KEY)"' >> $@;))
+	         private_key="$(PACKAGES.$(p).PRIVATE_KEY)"' >> $(notdir $@);))
 	# In case $(PACKAGES) is empty.
 	$(hide) touch $@
 
@@ -1266,12 +1266,7 @@ ifeq ($(TARGET_BUILD_TYPE),debug)
 endif
 name := $(name)-ota-$(FILE_NAME_TAG)
 
-ifeq ($(OUT_DIR),out)
-INTERNAL_OTA_PACKAGE_TARGET := $(ANDROID_BUILD_TOP)/$(PRODUCT_OUT)/$(name).zip
-APKCERTS_FILE := $(ANDROID_BUILD_TOP)/$(APKCERTS_FILE)
-else
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
-endif
 
 $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)
 
